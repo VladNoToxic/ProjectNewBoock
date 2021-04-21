@@ -18,6 +18,7 @@
   "homepage": "https://github.com/VladNoToxic/ProjectNewBoock#readme",
   "dependencies": {
     "fastify": "^3.15.0",
-    "fastify-autoload": "^3.7.1"
+    "fastify-autoload": "^3.7.1",
+    "fastify-plugin": "^3.0.0"
   }
 }
