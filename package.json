@@ -1,0 +1,23 @@
+{
+  "name": "projectnewboock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VladNoToxic/ProjectNewBoock.git"
+  },
+  "author": "Vlad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VladNoToxic/ProjectNewBoock/issues"
+  },
+  "homepage": "https://github.com/VladNoToxic/ProjectNewBoock#readme",
+  "dependencies": {
+    "fastify": "^3.15.0",
+    "fastify-autoload": "^3.7.1"
+  }
+}
