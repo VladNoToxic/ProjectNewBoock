@@ -7,7 +7,6 @@
     "test": "test"
   },
   "scripts": {
-    "test": "tap test/**/*.test.js",
     "start": "fastify start -l info app.js",
     "dev": "fastify start -w -l info -P app.js"
   },
@@ -19,9 +18,12 @@
     "fastify-autoload": "^3.3.1",
     "fastify-cli": "^2.9.1",
     "fastify-plugin": "^3.0.0",
-    "fastify-sensible": "^3.1.1"
+    "fastify-sensible": "^3.1.1",
+    "sequelize": "^6.6.2"
   },
   "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-config-google": "^0.14.0",
     "tap": "^14.11.0"
   }
 }
