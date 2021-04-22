@@ -12,7 +12,6 @@ global.app = {
 		dialect: 'mssql',
 		host: '',
 	}),
-	Database: {},
 };
 
 module.exports = async function(fastify, opts) {
@@ -25,7 +24,7 @@ module.exports = async function(fastify, opts) {
 			await app.sequelize.sync();
 			for (let i = 0; i < modules.length; i++) {
 				console.log(`Запуск ${modules[i].Var}`);
-				app.modules[modules[i].Var] = require(modules[i].req);
+				app[modules[i].Var] = require(modules[i].req);
 			}
 		} catch (error) {
 			console.error(error);
