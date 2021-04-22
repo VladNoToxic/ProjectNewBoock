@@ -1,8 +1,8 @@
 const options = {
 	schema: {
 		querystring: {
-            type: 'object',
-            required: ['name'],
+			type: 'object',
+			required: ['name'],
 			properties: {
 				name: { type: 'string', not: { type: ['null'] } },
 			}
