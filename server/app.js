@@ -42,10 +42,6 @@ module.exports = async function(fastify, opts) {
 		console.log(error);
 		reply.code(500).send();
 	});
-	fastify.register(AutoLoad, {
-		dir: path.join(__dirname, 'plugins'),
-		options: Object.assign({}, opts),
-	});
 
 	fastify.register(AutoLoad, {
 		dir: path.join(__dirname, 'routes'),

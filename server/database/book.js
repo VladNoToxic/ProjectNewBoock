@@ -22,7 +22,7 @@ const Book = sequelize.define('Book', {
 		allowNull: false,
 	},
 	pages: {
-		type: DataTypes.INTEGER.UNSIGNED,
+		type: DataTypes.INTEGER,
 		allowNull: false,
 	},
 	creators: {
@@ -34,7 +34,7 @@ const Book = sequelize.define('Book', {
 		allowNull: false,
 	},
 	amount: {
-		type: DataTypes.INTEGER.UNSIGNED,
+		type: DataTypes.INTEGER,
 		allowNull: false,
 	},
 	type_front: {
@@ -42,11 +42,11 @@ const Book = sequelize.define('Book', {
 		allowNull: false,
 	},
 	cost: {
-		type: DataTypes.INTEGER.UNSIGNED,
+		type: DataTypes.INTEGER,
 		allowNull: false,
 	},
 	authorId: {
-		type: DataTypes.INTEGER.UNSIGNED,
+		type: DataTypes.INTEGER,
 		allowNull: false,
 	},
 });

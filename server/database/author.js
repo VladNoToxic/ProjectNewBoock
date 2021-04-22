@@ -4,7 +4,7 @@ const sequelize = global.app.sequelize;
 const Author = sequelize.define('Author', {
 	// Model attributes are defined here
 	id: {
-		type: DataTypes.INTEGER.UNSIGNED,
+		type: DataTypes.INTEGER,
 		primaryKey: true,
 		unique: true,
 		autoIncrement: true,
