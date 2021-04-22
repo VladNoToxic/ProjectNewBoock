@@ -6,11 +6,11 @@ const Sequelize = require('sequelize');
 
 global.app = {
 	sequelize: new Sequelize({
-		username: 'sa',
-		password: '1488',
-		database: 'ProjectBoockPraktic',
-		dialect: 'mssql',
-		host: '192.168.0.103:1433',
+		username: 'u1147358_practic',
+		password: 'kF0wA2eN4jeX1n',
+		database: 'u1147358_bookshell',
+		dialect: 'mysql',
+		host: '37.140.192.56',
 	}),
 };
 

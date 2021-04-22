@@ -10,7 +10,7 @@ const options = {
 	},
 };
 module.exports = async function(fastify) {
-	fastify.get('/getBooks',options,async function(request, reply) {
+	fastify.get('/getBook',options,async function(request, reply) {
 
 		let limit = parseInt((request.query.perPage || 10), 10);
 		var page = parseInt((request.query.page || 1), 10);
