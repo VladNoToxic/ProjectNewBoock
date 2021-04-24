@@ -3,14 +3,14 @@
 const path = require('path');
 const AutoLoad = require('fastify-autoload');
 const Sequelize = require('sequelize');
-
+require('dotenv').config();
 global.app = {
 	sequelize: new Sequelize({
-		username: 'u1147358_practic',
-		password: 'kF0wA2eN4jeX1n',
-		database: 'u1147358_bookshell',
-		dialect: 'mysql',
-		host: '37.140.192.56',
+		username: process.env.DB_USER,
+		password: process.env.DB_PASS,
+		database: process.env.DB_DATABASE,
+		dialect: process.env.DB_DIALECT,
+		host: process.env.DB_HOST,
 	}),
 };
 

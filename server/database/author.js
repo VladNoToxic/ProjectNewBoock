@@ -19,12 +19,12 @@ const Author = sequelize.define('Author', {
 	},
 	otchestvo: {
 		type: DataTypes.STRING,
-		allowNull: false
+		allowNull: true
 	},
 	shortName: {
 		type: DataTypes.VIRTUAL,
 		get() {
-			return `${this.lastName} ${this.firstName.charAt(0).toUpperCase()}.${this.otchestvo.charAt(0).toUpperCase()}`;
+			return (this.otchestvo != null)? `${this.lastName} ${this.firstName.charAt(0).toUpperCase()}.${this.otchestvo.charAt(0).toUpperCase()}` :`${this.lastName} ${this.firstName.charAt(0).toUpperCase()}`;
 		},
 		set() {
 			throw new Error('Do not try to set the `shortName` value!');

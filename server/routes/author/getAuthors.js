@@ -10,7 +10,7 @@ const options = {
 	},
 };
 module.exports = async function(fastify) {
-	fastify.get('/getBook',options,async function(request, reply) {
+	fastify.get('/getBooks',options,async function(request, reply) {
 
 		await global.app.Database.book.findByPk(request.query.name).then(async result => {
 			if (result == null) return reply.code(400).send();
