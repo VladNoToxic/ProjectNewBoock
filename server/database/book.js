@@ -16,6 +16,13 @@ const Book = sequelize.define('Book', {
 	name: {
 		type: DataTypes.STRING,
 		allowNull: false,
+		get() {
+			const tmp = this.getDataValue('name');
+			return tmp.charAt(0).toUpperCase() +  tmp.slice(1);
+		},
+		set(value) {
+			this.setDataValue('name', value.charAt(0).toUpperCase() + value.slice(1));
+		}
 	},
 	year: {
 		type: DataTypes.INTEGER.UNSIGNED,
@@ -28,10 +35,24 @@ const Book = sequelize.define('Book', {
 	creators: {
 		type: DataTypes.STRING,
 		allowNull: false,
+		get() {
+			const tmp = this.getDataValue('creators');
+			return tmp.charAt(0).toUpperCase() +  tmp.slice(1);
+		},
+		set(value) {
+			this.setDataValue('creators', value.charAt(0).toUpperCase() + value.slice(1));
+		}
 	},
 	genre: {
 		type: DataTypes.STRING,
 		allowNull: false,
+		get() {
+			const tmp = this.getDataValue('genre');
+			return tmp.charAt(0).toUpperCase() +  tmp.slice(1);
+		},
+		set(value) {
+			this.setDataValue('genre', value.charAt(0).toUpperCase() + value.slice(1));
+		}
 	},
 	amount: {
 		type: DataTypes.INTEGER,
@@ -40,6 +61,13 @@ const Book = sequelize.define('Book', {
 	type_front: {
 		type: DataTypes.STRING,
 		allowNull: false,
+		get() {
+			const tmp = this.getDataValue('type_front');
+			return tmp.charAt(0).toUpperCase() +  tmp.slice(1);
+		},
+		set(value) {
+			this.setDataValue('type_front', value.charAt(0).toUpperCase() + value.slice(1));
+		}
 	},
 	cost: {
 		type: DataTypes.INTEGER,
@@ -49,6 +77,10 @@ const Book = sequelize.define('Book', {
 		type: DataTypes.INTEGER,
 		allowNull: false,
 	},
+	annotation: {
+		type: DataTypes.TEXT,
+		allowNull: false,
+	}
 });
 
 module.exports = Book;

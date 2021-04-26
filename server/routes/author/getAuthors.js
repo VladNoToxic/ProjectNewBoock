@@ -2,22 +2,38 @@ const options = {
 	schema: {
 		querystring: {
 			type: 'object',
-			required: ['name'],
 			properties: {
-				name: { type: 'string', not: { type: ['null'] } },
+				page: {type: 'number', not: { type: ['null'] } },
+				perPage: { type: 'number', not: { type: ['null'] } },
 			}
 		}        
 	},
 };
 module.exports = async function(fastify) {
-	fastify.get('/getBooks',options,async function(request, reply) {
+	fastify.get('/gets',options,async function(request, reply) {
 
-		await global.app.Database.book.findByPk(request.query.name).then(async result => {
-			if (result == null) return reply.code(400).send();
-			let author;
-			await global.app.Database.author.findByPk(result.authorId).then(res => author = (res != null) ? res.shortName : 'Неизвестно');
-			result.author = author;
-			reply.send(result.toJSON());
+		let limit = parseInt((request.query.perPage || 10), 10);
+		var page = parseInt((request.query.page || 1), 10);
+		var offset = (page > 1) ? limit*(page-1) : 0;
+		var opts = {
+			limit: limit,
+			offset: offset,
+			benchmark: true,
+			order: [['createdAt']],
+			rejectOnEmpty: true
+		};
+		let toSend = {};
+		await global.app.Database.author.findAndCountAll(opts).then(async result => {
+			toSend = { count: result.count, list: [] };
+			for (let author of result.rows) {
+				toSend.list.push({
+					id: author.id,
+					firstName: author.firstName,
+					lastName: author.lastName,
+					otchestvo: author.otchestvo
+				});
+			}
+			reply.send(toSend);
 		}).catch(() => {
 			reply.code(500).send('Ошибка сервера');
 		});

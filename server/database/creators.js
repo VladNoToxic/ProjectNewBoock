@@ -8,19 +8,19 @@ const Creator = sequelize.define('Creator', {
 		primaryKey: true,
 		unique: true,
 		get() {
-			// eslint-disable-next-line no-undef
-			return this.getDataValue(name).toLowerCase();
+			const tmp = this.getDataValue('name');
+			return tmp.charAt(0).toUpperCase() +  tmp.slice(1);
 		},
 		set(value) {
-			return value.toLowerCase();
+			this.setDataValue('name', value.charAt(0).toUpperCase() + value.slice(1));
 		}
 	},
 }, {
 	getterMethods: {
-		Name() {
-			return  this.name.charAt(0).toUpperCase() +  this.name.slice(1);
+		filter() {
+			return {label: this.name};
 		}
-	},
+	}
 });
 
 module.exports = Creator;

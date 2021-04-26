@@ -30,9 +30,11 @@ module.exports = async function(fastify, opts) {
 			console.error(error);
 		}
 	}();
-	fastify.setErrorHandler(function(error, request, reply) {
+	fastify.setErrorHandler(function (error, request, reply) {
 		if (error.validation) {
+			console.log(error);
 			const temp = [];
+			console.log(request.body.author.value, typeof request.body.author.value);
 			error.validation.forEach((elem) => {
 				temp.push(elem.message);
 			});
@@ -42,7 +44,12 @@ module.exports = async function(fastify, opts) {
 		console.log(error);
 		reply.code(500).send();
 	});
-
+	fastify.register(require('fastify-cors'), {
+		origin:'*',
+		methods:'*',
+		credentials: true,
+	});
+	fastify.register(require('fastify-multipart'),{attachFieldsToBody: true,sharedSchemaId: '#mySharedSchema'});
 	fastify.register(AutoLoad, {
 		dir: path.join(__dirname, 'routes'),
 		options: Object.assign({}, opts),
