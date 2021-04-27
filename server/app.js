@@ -3,14 +3,14 @@
 const path = require('path');
 const AutoLoad = require('fastify-autoload');
 const Sequelize = require('sequelize');
-
+require('dotenv').config();
 global.app = {
 	sequelize: new Sequelize({
-		username: 'u1147358_practic',
-		password: 'kF0wA2eN4jeX1n',
-		database: 'u1147358_bookshell',
-		dialect: 'mysql',
-		host: '37.140.192.56',
+		username: process.env.DB_USER,
+		password: process.env.DB_PASS,
+		database: process.env.DB_DATABASE,
+		dialect: process.env.DB_DIALECT,
+		host: process.env.DB_HOST,
 	}),
 };
 
@@ -30,9 +30,11 @@ module.exports = async function(fastify, opts) {
 			console.error(error);
 		}
 	}();
-	fastify.setErrorHandler(function(error, request, reply) {
+	fastify.setErrorHandler(function (error, request, reply) {
 		if (error.validation) {
+			console.log(error);
 			const temp = [];
+			console.log(request.body.author.value, typeof request.body.author.value);
 			error.validation.forEach((elem) => {
 				temp.push(elem.message);
 			});
@@ -42,7 +44,12 @@ module.exports = async function(fastify, opts) {
 		console.log(error);
 		reply.code(500).send();
 	});
-
+	fastify.register(require('fastify-cors'), {
+		origin:'*',
+		methods:'*',
+		credentials: true,
+	});
+	fastify.register(require('fastify-multipart'),{attachFieldsToBody: true,sharedSchemaId: '#mySharedSchema'});
 	fastify.register(AutoLoad, {
 		dir: path.join(__dirname, 'routes'),
 		options: Object.assign({}, opts),

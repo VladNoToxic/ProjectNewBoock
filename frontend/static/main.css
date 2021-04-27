@@ -1,0 +1,58 @@
+ .vcard {
+    padding: 30px 15px 15px 15px;
+	margin-bottom: 30px;
+    border: 1px groove #0000001a;
+	border-radius: 6px;
+  }
+.vcard > p {
+	margin: 0;
+	text-align: left;
+}
+.author {
+	color: #888888;
+	font-size: small;
+}
+.name {
+	padding-top: 10px;
+	font-size: medium;
+}
+.cost {
+	text-align: left;
+	padding: 5px 0 0 0;
+	margin: 0;
+}
+.cardbutton {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.text { 
+	text-align: left;
+}
+.book {
+	padding-top: 50px;
+}
+.text > h4 {
+	color: #c2c0c0;
+}
+.cutter {
+	height: 1px;
+	border-bottom: 1px groove #0000001a;
+	width: 99%;
+	margin: 10px 0 25px 0;
+}
+.book-item {
+	display: flex;
+    align-items: center;
+	margin: 10px 0 0 0;
+}
+.book-desc {
+	width: 160px;
+	color: #c2c0c0;
+}
+.price {
+    padding: 40px 15px 40px 15px;
+	background-color: rgba(0, 255, 255, 0.219);
+    border: 1px groove #0000001a;
+	border-radius: 6px;
+}
