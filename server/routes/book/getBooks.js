@@ -25,7 +25,7 @@ module.exports = async function(fastify) {
 			benchmark: true,
 			rejectOnEmpty: true
 		};
-		if (request.query.sortBy.length > 0) opts.order = [[request.query.sortBy]];
+		if (request.query.sortBy && request.query.sortBy.length > 0) opts.order = [[request.query.sortBy]];
 		if (request.query.sortDesc == 'true') opts.order[0].push('DESC');
 
 		await global.app.Database.book.findAndCountAll(opts).then(result => {
